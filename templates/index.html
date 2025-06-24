@@ -2,50 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Smart City Energy Optimizer</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body { background-color: #f4f7f9; }
-        .container { max-width: 600px; margin-top: 50px; }
-        .card { border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    </style>
+    <title>Smart City Energy AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="container">
-        <div class="card p-4">
-            <h2 class="text-center text-primary mb-4">Energy Anomaly Detection</h2>
-            <form method="POST" action="/predict">
-                <div class="form-group mb-3">
-                    <label>Electricity Consumed</label>
-                    <input type="number" step="any" name="Electricity_Consumed" class="form-control" required>
-                </div>
-                <div class="form-group mb-3">
-                    <label>Temperature</label>
-                    <input type="number" step="any" name="Temperature" class="form-control" required>
-                </div>
-                <div class="form-group mb-3">
-                    <label>Humidity</label>
-                    <input type="number" step="any" name="Humidity" class="form-control" required>
-                </div>
-                <div class="form-group mb-3">
-                    <label>Wind Speed</label>
-                    <input type="number" step="any" name="Wind_Speed" class="form-control" required>
-                </div>
-                <div class="form-group mb-4">
-                    <label>Avg Past Consumption</label>
-                    <input type="number" step="any" name="Avg_Past_Consumption" class="form-control" required>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success px-5">Predict</button>
-                </div>
-            </form>
+    <div class="container-glass">
+        <h2>🔌 Smart City Energy Optimizer</h2>
+        <form method="POST" action="/predict">
+            <label for="Electricity_Consumed">Electricity Consumed</label>
+            <input type="number" step="any" name="Electricity_Consumed" required>
 
-            {% if result %}
-                <div class="alert alert-info mt-4 text-center">
-                    <strong>Prediction:</strong> {{ result }}
-                </div>
-            {% endif %}
-        </div>
+            <label for="Temperature">Temperature</label>
+            <input type="number" step="any" name="Temperature" required>
+
+            <label for="Humidity">Humidity</label>
+            <input type="number" step="any" name="Humidity" required>
+
+            <label for="Wind_Speed">Wind Speed</label>
+            <input type="number" step="any" name="Wind_Speed" required>
+
+            <label for="Avg_Past_Consumption">Average Past Consumption</label>
+            <input type="number" step="any" name="Avg_Past_Consumption" required>
+
+            <button type="submit">🚀 Detect Anomaly</button>
+        </form>
+
+        {% if result %}
+            <div class="result-box">{{ result }}</div>
+        {% endif %}
     </div>
 </body>
 </html>

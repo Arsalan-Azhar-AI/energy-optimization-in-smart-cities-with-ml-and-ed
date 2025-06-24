@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request
 import numpy as np
-import pickle
+import joblib
+
 
 app = Flask(__name__)
 
 # Load your trained model
-model = pickle.load(open("my_model.pkl", "rb"))
+model = joblib.load("my_model.pkl")
+
 
 @app.route('/')
 def index():
